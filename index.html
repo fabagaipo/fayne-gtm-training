@@ -139,15 +139,6 @@
                 text-align: center;
             }
 
-            .gtm-box{
-                border:2px dashed #ccc;
-                padding:8px;
-                margin-top:8px;
-                min-height:20px;
-                background:#f9fafb;
-                font-size:14px;
-            }
-
             .dark-mode {
                 background: #1f2937;
                 color: white;
@@ -224,54 +215,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </header>
 
         <section class="features">
+
             <!-- Required Feature -->
             <div id="requiredCard" class="card required">
                 <h3>Required Cookies Enabled</h3>
                 <p>Required cookies are necessary for the website to function.</p>
-
+                <p><strong>Example Feature:</strong></p>
                 <button onclick="alert('This simulates login/session functionality.')">
-                    Access Account Area
+                Access Account Area
                 </button>
-
-                <p><strong>GTM Status:</strong></p>
-                <div id="gtm-required" class="gtm-box">
-                    Required cookies always active
-                </div>
             </div>
-
 
             <!-- Functional Feature -->
             <div id="functionalCard" class="card functional">
                 <h3>Functional Cookies Enabled</h3>
                 <p>Functional cookies remember preferences.</p>
-
+                <p><strong>Example Feature:</strong></p>
                 <label for="themeSelect">Choose site theme:</label>
                 <select id="themeSelect" onchange="changeTheme()">
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
                 </select>
-
-                <p><strong>GTM Status:</strong></p>
-                <div id="gtm-functional" class="gtm-box"></div>
             </div>
+
 
             <!-- Advertising Feature -->
             <div id="adsCard" class="card ads">
                 <h3>Advertising Cookies Enabled</h3>
                 <p>Advertising cookies enable promotional content.</p>
-
+                <p><strong>Example Advertisement:</strong></p>
                 <iframe width="100%" height="200"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                    title="Advertisement Video"
-                    frameborder="0"
-                    allowfullscreen>
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Advertisement Video"
+                frameborder="0"
+                allowfullscreen>
                 </iframe>
-
-                <p><strong>GTM Status:</strong></p>
-                <div id="gtm-ads" class="gtm-box"></div>
             </div>
+        </section>
 
-            </section>
+        <section class="consent-status">
+            <h2>Current Consent Status</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <strong>Required</strong>
+                    <span id="requiredStatus" style="color:#16a34a;">Enabled</span>
+                </div>
+                <div class="status-item">
+                    <strong>Functional</strong>
+                    <span id="functionalStatus">Disabled</span>
+                </div>
+                <div class="status-item">
+                    <strong>Advertising</strong>
+                    <span id="adsStatus">Disabled</span>
+                </div>
+            </div>
+        </section>
 
         <div class="footer">
             <p>Once consent is done or updated. Kindly refresh the page once again to see the site changes.</p>
@@ -285,7 +283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <script>
-        // Theme changer
+    // Theme changer
         function changeTheme(){
             const theme = document.getElementById("themeSelect").value;
             if (theme === "dark") {
