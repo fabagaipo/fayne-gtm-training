@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fayne - TrustArc Consent Demo</title>
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TBNRT44N');</script>
+        <!-- End Google Tag Manager -->
+
+        <style>
+            @font-face {
+                font-family: "Source Sans Pro";
+                src: url(https://consent.trustarc.com/get?name=SourceSansPro-Regular.ttf) format("truetype");
+            }
+
+            body {
+                font-family: "Source Sans Pro", Arial, sans-serif;
+                margin: 0;
+                background: linear-gradient(135deg,#f5f7fa,#e4ecf5);
+                padding: 40px 20px;
+                color: #333;
+            }
+
+            .container {
+                max-width: 1100px;
+                margin: auto;
+                background: white;
+                border-radius: 12px;
+                padding: 50px;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            }
+
+            header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 10px;
+            }
+
+            .subtitle {
+                color: #6b7280;
+                font-size: 18px;
+            }
+
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+                gap: 25px;
+                margin-top: 30px;
+            }
+
+            .card {
+                padding: 25px;
+                border-radius: 10px;
+                border: 1px solid #e5e7eb;
+                display: none;
+                transition: all 0.25s ease;
+            }
+
+            #requiredCard {
+                display: block;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            }
+
+            .card h3 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .icon {
+                font-size: 28px;
+            }
+
+            .required {
+                background: #ecfdf5;
+                border-color: #86efac;
+            }
+
+            .ads {
+                background: #fff7ed;
+                border-color: #fdba74;
+            }
+
+            .functional {
+                background: #eff6ff;
+                border-color: #93c5fd;
+            }
+
+            .consent-status {
+                margin-top: 40px;
+                padding-top: 30px;
+                border-top: 1px solid #e5e7eb;
+                text-align: center;
+            }
+
+            .consent-status h2 {
+                margin-bottom: 20px;
+            }
+
+            .status-grid {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                flex-wrap: wrap;
+            }
+
+            .status-item {
+                background: #f9fafb;
+                padding: 15px 25px;
+                border-radius: 8px;
+                border: 1px solid #e5e7eb;
+                min-width: 150px;
+            }
+
+            .status-item span {
+                display: block;
+                margin-top: 5px;
+                font-weight: bold;
+                color: #ef4444;
+            }
+
+            .footer {
+                margin-top: 50px;
+                font-size: 14px;
+                color: #6b7280;
+                text-align: center;
+            }
+
+            .dark-mode {
+                background: #1f2937;
+                color: white;
+            }
+
+            .dark-mode .container {
+                background: #374151;
+                color: white;
+            }
+
+            .dark-mode .subtitle {
+                color: #d1d5db;
+            }
+
+            .dark-mode .required {
+                background: #065f46;
+                border-color: #10b981;
+                color: white;
+            }
+
+            .dark-mode .functional {
+                background: #1e3a8a;
+                border-color: #3b82f6;
+                color: white;
+            }
+
+            .dark-mode .ads {
+                background: #7c2d12;
+                border-color: #f97316;
+                color: white;
+            }
+
+            .dark-mode .required,
+            .dark-mode .functional,
+            .dark-mode .ads {
+                background: #4b5563;
+            }
+
+            .dark-mode .card h3,
+            .dark-mode .card p,
+            .dark-mode label {
+                color: white;
+            }
+
+            .dark-mode select {
+                background: #374151;
+                color: white;
+                border: 1px solid #6b7280;
+            }
+
+            .dark-mode .status-item {
+                background: #4b5563;
+                border-color: #6b7280;
+            }
+
+            .dark-mode .footer {
+                color: #d1d5db;
+            }
+        </style>
+    </head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBNRT44N"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="container">
+        <header>
+            <h1>Consent Controlled Website</h1>
+            <p class="subtitle">
+                Demo showing consent-based tag management using TrustArc CCM Pro and Google Tag Manager.
+            </p>
+        </header>
+
+        <section class="features">
+
+            <!-- Required Feature -->
+            <div id="requiredCard" class="card required">
+                <h3>Required Cookies Enabled</h3>
+                <p>Required cookies are necessary for the website to function.</p>
+                <p><strong>Example Feature:</strong></p>
+                <button onclick="alert('This simulates login/session functionality.')">
+                Access Account Area
+                </button>
+            </div>
+
+            <!-- Functional Feature -->
+            <div id="functionalCard" class="card functional">
+                <h3>Functional Cookies Enabled</h3>
+                <p>Functional cookies remember preferences.</p>
+                <p><strong>Example Feature:</strong></p>
+                <label for="themeSelect">Choose site theme:</label>
+                <select id="themeSelect" onchange="changeTheme()">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+
+
+            <!-- Advertising Feature -->
+            <div id="adsCard" class="card ads">
+                <h3>Advertising Cookies Enabled</h3>
+                <p>Advertising cookies enable promotional content.</p>
+                <p><strong>Example Advertisement:</strong></p>
+                <iframe width="100%" height="200"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Advertisement Video"
+                frameborder="0"
+                allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <section class="consent-status">
+            <h2>Current Consent Status</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <strong>Required</strong>
+                    <span id="requiredStatus" style="color:#16a34a;">Enabled</span>
+                </div>
+                <div class="status-item">
+                    <strong>Functional</strong>
+                    <span id="functionalStatus">Disabled</span>
+                </div>
+                <div class="status-item">
+                    <strong>Advertising</strong>
+                    <span id="adsStatus">Disabled</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="footer">
+            <p>Once consent is done or updated. Kindly refresh the page once again to see the site changes.</p>
+        </div>
+
+        <!-- CCM PRO -->
+        <div id="consent-banner"></div>
+        <div id="teconsent">
+            <script type="text/javascript" async="async" src="https://consent.trustarc.com/v2/notice/mkicfg"></script>
+        </div>
+    </div>
+
+    <script>
+    // Theme changer and save theme preference if functional cookies allowed
+    function changeTheme(){
+        const theme = document.getElementById("themeSelect").value;
+        if (theme === "dark") {
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("dark-mode");
+        }
+        localStorage.setItem("siteTheme", theme);
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+        const savedTheme = localStorage.getItem("siteTheme");
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-mode");
+            const selector = document.getElementById("themeSelect");
+            if (selector) selector.value = "dark";
+        }
+    });
+    </script>
+
+</body>
+</html>
