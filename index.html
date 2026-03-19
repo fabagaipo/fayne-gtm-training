@@ -283,25 +283,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <script>
-    // Theme changer and save theme preference if functional cookies allowed
-    function changeTheme(){
-        const theme = document.getElementById("themeSelect").value;
-        if (theme === "dark") {
-            document.body.classList.add("dark-mode");
-        } else {
-            document.body.classList.remove("dark-mode");
-        }
-        localStorage.setItem("siteTheme", theme);
-    }
+        function getConsent(){
+            const cookie = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('cmapi_cookie_privacy='));
 
-    document.addEventListener("DOMContentLoaded", function(){
-        const savedTheme = localStorage.getItem("siteTheme");
-        if (savedTheme === "dark") {
-            document.body.classList.add("dark-mode");
-            const selector = document.getElementById("themeSelect");
-            if (selector) selector.value = "dark";
+            if (!cookie) return {};
+
+            try {
+                return JSON.parse(decodeURIComponent(cookie.split('=')[1]));
+            } catch(e) {
+                return {};
+            }
         }
-    });
+
+        function applyConsentFeatures(){
+            const consent = getConsent();
+
+            // Functional
+
+            if (consent.functional) {
+                const card = document.getElementById("functionalCard");
+                if(card) card.style.display = "block";
+                const status = document.getElementById("functionalStatus");
+                if(status){
+                    status.textContent = "Enabled";
+                    status.style.color = "#16a34a";
+                }
+            }
+
+            // Advertising
+            if (consent.advertising) {
+                const card = document.getElementById("adsCard");
+                if (card) card.style.display = "block";
+                const status = document.getElementById("adsStatus");
+                if (status) {
+                    status.textContent = "Enabled";
+                    status.style.color = "#16a34a";
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", applyConsentFeatures);
+        
+        // Theme changer
+        function changeTheme(){
+            const theme = document.getElementById("themeSelect").value;
+            if (theme === "dark") {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+            localStorage.setItem("siteTheme", theme);
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            const savedTheme = localStorage.getItem("siteTheme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                const selector = document.getElementById("themeSelect");
+                if (selector) selector.value = "dark";
+            }
+        });
     </script>
 
 </body>
